@@ -32,7 +32,6 @@ body {
 body * {
   font-family: "Inter", sans-serif;
   color: var(--text-color);
-  /*asterisco é um seletor universal, significa que vai fazer a aplicação em todo elemento do body*/
 }
 /*profile*/
 #container {
@@ -84,11 +83,16 @@ body * {
   left: 0;
   z-index: 1;
   transform: translateY(-50%);
+
+  animation: slide-out 0.9s;
 }
 
 .light #switch button {
-  right: 0;
-  left: initial;
+  animation: slide-in 0.9s forwards;
+}
+
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
 }
 
 #switch span {
@@ -172,4 +176,33 @@ footer {
   font-size: 14px;
 }
 
-  
+  /* media queries */
+
+  @media (min-width: 700px) {
+    :root {
+      --bg-url: url(./assets/bg-dark.jpg);
+    }
+      .light {
+        --bg-url: url(./assets/bg-light.jpg);
+      }
+  }
+
+  /* animation */
+
+  @keyframes slide-in {
+    from {
+      left: 0;
+    }
+    to {
+      left: 50%;
+    }
+  }
+
+  @keyframes slide-out {
+    from {
+      left: 50%;
+    }
+    to {
+      left: 0;
+    }
+  }
